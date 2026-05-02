@@ -1,0 +1,1077 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Senior Capstone Portfolio — Benedict College BA 432</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --purple: #111111;
+  --gold: #555555;
+  --bg: #F7F7F7;
+  --card: #FFFFFF;
+  --dark: #000000;
+  --text: #222222;
+  --sub: #666666;
+  --light-p: #F0F0F0;
+  --light-g: #EBEBEB;
+  --border: #DDDDDD;
+}
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  font-family: 'DM Sans', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+a { color: var(--purple); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+/* NAV */
+.nav {
+  position: sticky; top: 0; z-index: 100;
+  background: rgba(255,255,255,0.95);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--border);
+  padding: 0 20px;
+}
+.nav-inner {
+  max-width: 1100px; margin: 0 auto;
+  display: flex; align-items: center; justify-content: space-between;
+  height: 56px; gap: 8px;
+}
+.nav-logo {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 18px; font-weight: 700; color: var(--purple);
+  white-space: nowrap; letter-spacing: -0.02em;
+}
+.nav-logo span { color: var(--gold); }
+.nav-links { display: flex; gap: 2px; overflow-x: auto; }
+.nav-btn {
+  font-family: 'DM Sans', sans-serif; font-size: 12px; font-weight: 400;
+  padding: 8px 14px; border-radius: 6px; border: none; cursor: pointer;
+  background: transparent; color: var(--sub);
+  letter-spacing: 0.04em; text-transform: uppercase;
+  transition: all 0.25s ease; white-space: nowrap;
+}
+.nav-btn.active { background: var(--purple); color: #fff; font-weight: 600; }
+.nav-btn:hover:not(.active) { background: var(--light-p); }
+
+/* SECTIONS */
+.page { display: none; }
+.page.active { display: block; }
+.container { max-width: 900px; margin: 0 auto; padding: 40px 24px 80px; }
+
+/* SECTION HEADER */
+.sh-label {
+  font-size: 11px; font-weight: 600; color: var(--gold);
+  text-transform: uppercase; letter-spacing: 0.15em;
+  display: flex; align-items: center; gap: 8px; margin-bottom: 8px;
+}
+.sh-label::before {
+  content: ''; width: 24px; height: 1px; background: var(--gold); display: inline-block;
+}
+.sh-title {
+  font-family: 'Cormorant Garamond', serif; font-size: 32px; font-weight: 700;
+  color: var(--dark); margin: 0 0 8px; letter-spacing: -0.03em; line-height: 1.15;
+}
+.sh-sub { font-size: 14px; color: var(--sub); margin: 0 0 36px; }
+
+/* CARDS */
+.card {
+  background: var(--card); border-radius: 16px; padding: 28px 32px;
+  border: 1px solid var(--border); margin-bottom: 16px;
+}
+.card-accent-left { border-left: 4px solid var(--gold); }
+
+/* TIP BOX */
+.tip {
+  margin-top: 28px; padding: 20px 24px; border-radius: 12px;
+  background: var(--light-p); border: 1px solid rgba(0,0,0,0.09);
+  display: flex; gap: 14px; align-items: flex-start;
+}
+.tip-icon { font-size: 18px; margin-top: 1px; }
+.tip-label {
+  font-size: 11px; font-weight: 700; color: var(--purple);
+  text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 6px;
+}
+.tip-text { font-size: 13px; color: var(--text); line-height: 1.75; }
+
+/* TAGS */
+.tag {
+  font-size: 11px; font-weight: 500; padding: 5px 12px; border-radius: 100px;
+  display: inline-block; margin: 3px 4px 3px 0; letter-spacing: 0.02em;
+}
+.tag-purple { background: var(--light-p); color: var(--purple); border: 1px solid rgba(0,0,0,0.12); }
+.tag-gold { background: var(--light-g); color: #444444; border: 1px solid rgba(0,0,0,0.15); }
+
+/* HEADING STYLES */
+h3.section-h {
+  font-family: 'Cormorant Garamond', serif; font-size: 20px; font-weight: 700;
+  color: var(--dark); margin: 0 0 16px;
+}
+h4.block-h {
+  font-family: 'Cormorant Garamond', serif; font-size: 19px; font-weight: 700;
+  color: var(--dark); margin: 0 0 10px;
+}
+
+/* GRID HELPERS */
+.flex-wrap { display: flex; flex-wrap: wrap; gap: 16px; }
+.flex-col { display: flex; flex-direction: column; gap: 16px; }
+.grid-2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; }
+.grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 12px; }
+.grid-4 { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 12px; }
+
+/* TEXT */
+.text-sm { font-size: 13px; }
+.text-sub { color: var(--sub); }
+.text-purple { color: var(--purple); }
+.text-gold { color: var(--gold); }
+.text-dark { color: var(--dark); }
+.fw-600 { font-weight: 600; }
+.uppercase { text-transform: uppercase; letter-spacing: 0.1em; }
+
+/* ==================== HOME ==================== */
+.home-hero { text-align: center; padding: 80px 20px 60px; }
+.home-avatar {
+  width: 140px; height: 140px; border-radius: 50%; margin: 0 auto 32px;
+  background: linear-gradient(135deg, #111111, #444444);
+  display: flex; align-items: center; justify-content: center;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.13), 0 0 0 6px var(--card), 0 0 0 8px rgba(0,0,0,0.15);
+}
+.home-avatar span {
+  font-family: 'Cormorant Garamond', serif; font-size: 44px; color: #fff; font-weight: 300;
+}
+.home-name {
+  font-family: 'Cormorant Garamond', serif; font-size: 48px; font-weight: 700;
+  color: var(--dark); margin: 0 0 8px; letter-spacing: -0.04em; line-height: 1.1;
+}
+.home-title { font-size: 16px; color: var(--purple); font-weight: 500; margin: 0 0 4px; }
+.home-school { font-size: 14px; color: var(--sub); margin: 0 0 28px; }
+.home-contact-bar {
+  display: flex; justify-content: center; gap: 12px; flex-wrap: wrap; margin-bottom: 36px;
+}
+.home-contact-item {
+  font-size: 13px; color: var(--sub); padding: 8px 18px; border-radius: 100px;
+  background: var(--card); border: 1px solid var(--border);
+  display: inline-flex; align-items: center; gap: 8px;
+}
+.home-contact-dot { color: var(--gold); font-size: 8px; }
+.home-cta { display: flex; justify-content: center; gap: 12px; flex-wrap: wrap; }
+.btn-primary {
+  font-family: 'DM Sans', sans-serif; font-size: 13px; font-weight: 600;
+  padding: 12px 28px; border-radius: 8px; cursor: pointer;
+  background: var(--purple); color: #fff; border: none;
+  letter-spacing: 0.04em; text-transform: uppercase; transition: all 0.25s ease;
+}
+.btn-primary:hover { filter: brightness(1.15); }
+.btn-outline {
+  font-family: 'DM Sans', sans-serif; font-size: 13px; font-weight: 600;
+  padding: 12px 28px; border-radius: 8px; cursor: pointer;
+  background: transparent; color: var(--purple); border: 1.5px solid var(--purple);
+  letter-spacing: 0.04em; text-transform: uppercase; transition: all 0.25s ease;
+}
+.btn-outline:hover { background: var(--light-p); }
+.stats-bar {
+  margin: 56px auto 0; display: flex; flex-wrap: wrap;
+  background: var(--card); border-radius: 16px; border: 1px solid var(--border);
+  overflow: hidden; max-width: 640px;
+}
+.stat-item {
+  flex: 1 1 120px; padding: 24px 16px; text-align: center;
+  border-right: 1px solid var(--border);
+}
+.stat-item:last-child { border-right: none; }
+.stat-num {
+  font-family: 'Cormorant Garamond', serif; font-size: 26px; font-weight: 700; color: var(--purple);
+}
+.stat-label {
+  font-size: 11px; color: var(--sub); text-transform: uppercase;
+  letter-spacing: 0.1em; margin-top: 4px;
+}
+
+/* ==================== ABOUT ==================== */
+.about-story { line-height: 1.85; font-size: 15px; }
+.quick-facts {
+  background: linear-gradient(135deg, #111111, #444444);
+  border-radius: 16px; padding: 28px; color: #fff; flex: 1 1 220px;
+}
+.quick-facts h3 {
+  font-family: 'Cormorant Garamond', serif; font-size: 20px; color: var(--gold); margin: 0 0 16px;
+}
+.qf-label { font-size: 10px; text-transform: uppercase; letter-spacing: 0.12em; color: rgba(255,255,255,0.6); }
+.qf-value { font-size: 14px; font-weight: 500; margin-top: 2px; }
+.qf-item { margin-bottom: 12px; }
+
+/* ==================== CAPSTONE ==================== */
+.cap-header {
+  background: linear-gradient(135deg, #111111, #444444);
+  border-radius: 16px; padding: 40px 36px; margin-bottom: 20px;
+  position: relative; overflow: hidden;
+}
+.cap-header-circle {
+  position: absolute; top: -40px; right: -40px; width: 200px; height: 200px;
+  border-radius: 50%; background: rgba(255,255,255,0.08);
+}
+.cap-header-label {
+  font-size: 11px; color: var(--gold); text-transform: uppercase;
+  letter-spacing: 0.15em; font-weight: 600; margin-bottom: 12px; position: relative;
+}
+.cap-header h3 {
+  font-family: 'Cormorant Garamond', serif; font-size: 34px; color: #fff;
+  margin: 0 0 8px; font-weight: 700; letter-spacing: -0.02em; position: relative;
+}
+.cap-header p { font-size: 15px; color: rgba(255,255,255,0.8); max-width: 600px; line-height: 1.65; position: relative; }
+.cap-section { border-left-width: 4px; border-left-style: solid; }
+.cap-section-red { border-left-color: #E74C3C; }
+.cap-section-green { border-left-color: #27AE60; }
+.cap-section-blue { border-left-color: #2980B9; }
+.cap-section-gold { border-left-color: var(--gold); }
+.cap-section-purple { border-left-color: var(--purple); }
+.fin-item {
+  text-align: center; padding: 20px 12px; border-radius: 12px;
+  background: var(--bg); border: 1px solid var(--border);
+}
+.fin-item.featured { background: linear-gradient(135deg, rgba(0,0,0,0.04), rgba(0,0,0,0.06)); border-color: var(--gold); }
+.fin-icon { font-size: 16px; color: var(--sub); margin-bottom: 6px; }
+.fin-value { font-family: 'Cormorant Garamond', serif; font-size: 22px; font-weight: 700; color: var(--purple); }
+.fin-label { font-size: 10px; color: var(--sub); text-transform: uppercase; letter-spacing: 0.1em; margin-top: 6px; }
+.link-card {
+  flex: 1 1 180px; background: var(--card); border-radius: 12px; padding: 20px 22px;
+  border: 1px solid var(--border); cursor: pointer; transition: all 0.25s ease;
+}
+.link-card:hover { border-color: var(--gold); box-shadow: 0 4px 16px rgba(0,0,0,0.1); }
+.link-icon { font-size: 24px; margin-bottom: 10px; }
+.link-title { font-size: 14px; font-weight: 600; color: var(--dark); margin-bottom: 4px; }
+.link-desc { font-size: 12px; color: var(--sub); }
+
+/* ==================== PROJECTS ==================== */
+.project-card {
+  background: var(--card); border-radius: 16px; overflow: hidden; cursor: pointer;
+  border: 1px solid var(--border); transition: all 0.3s ease;
+}
+.project-card.featured { border-color: var(--gold); box-shadow: 0 4px 20px rgba(0,0,0,0.06); }
+.project-card:hover { box-shadow: 0 4px 20px rgba(0,0,0,0.08); }
+.project-badge {
+  background: linear-gradient(90deg, #111111, #555555);
+  padding: 6px 20px; font-size: 10px; font-weight: 700; color: #fff;
+  text-transform: uppercase; letter-spacing: 0.15em;
+}
+.project-inner { padding: 24px 28px; }
+.project-title {
+  font-family: 'Cormorant Garamond', serif; font-size: 21px; color: var(--dark);
+  margin: 0 0 6px; font-weight: 700;
+}
+.project-meta { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
+.project-toggle {
+  font-size: 18px; color: var(--sub); transition: transform 0.3s ease;
+  flex-shrink: 0; margin-left: auto;
+}
+.project-toggle.open { transform: rotate(180deg); }
+.project-details {
+  display: none; margin-top: 20px; padding-top: 20px; border-top: 1px solid var(--border);
+}
+.project-details.open { display: block; }
+.project-link-box {
+  padding: 14px 20px; border-radius: 10px; background: var(--light-g);
+  border: 1px solid rgba(0,0,0,0.1); font-size: 13px; color: #444444; margin-top: 16px;
+}
+.add-project {
+  margin-top: 24px; background: var(--card); border-radius: 14px;
+  padding: 24px 28px; border: 2px dashed var(--border); text-align: center;
+}
+.add-icon { font-size: 28px; margin-bottom: 8px; color: var(--sub); }
+.add-title { font-size: 14px; font-weight: 600; color: var(--dark); }
+.add-desc { font-size: 13px; color: var(--sub); margin-top: 4px; }
+
+/* ==================== RÉSUMÉ ==================== */
+.resume-dl-bar {
+  display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px;
+  background: var(--card); border-radius: 12px; padding: 16px 24px; margin-bottom: 20px;
+  border: 1px solid var(--border);
+}
+.resume-dl-btns { display: flex; gap: 10px; }
+.exp-header { display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: 8px; }
+.exp-title { font-size: 16px; font-weight: 600; color: var(--dark); }
+.exp-dates { font-size: 12px; color: var(--sub); font-weight: 500; }
+.exp-org { font-size: 14px; color: var(--purple); margin-top: 2px; margin-bottom: 12px; font-weight: 500; }
+.exp-point { display: flex; gap: 10px; margin-bottom: 8px; font-size: 14px; line-height: 1.65; }
+.exp-dot { color: var(--gold); font-size: 8px; margin-top: 7px; flex-shrink: 0; }
+.skill-col {
+  flex: 1 1 240px; background: var(--card); border-radius: 14px; padding: 22px 24px;
+  border: 1px solid var(--border);
+}
+.skill-cat {
+  font-size: 13px; font-weight: 700; color: var(--purple);
+  text-transform: uppercase; letter-spacing: 0.1em; margin: 0 0 14px;
+}
+.skill-item { font-size: 13px; color: var(--text); margin-bottom: 8px; display: flex; align-items: center; gap: 8px; }
+.skill-dot {
+  width: 6px; height: 6px; border-radius: 50%; flex-shrink: 0;
+}
+.skill-dot.gold { background: #333333; }
+.skill-dot.muted { background: rgba(0,0,0,0.2); }
+
+/* ==================== REFLECTION ==================== */
+.ref-card { display: flex; gap: 16px; align-items: flex-start; }
+.ref-num {
+  width: 44px; height: 44px; border-radius: 10px; background: var(--light-p);
+  display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+  font-family: 'Cormorant Garamond', serif; font-size: 18px; font-weight: 700; color: var(--purple);
+}
+.ref-title {
+  font-family: 'Cormorant Garamond', serif; font-size: 21px; color: var(--dark);
+  margin: 0 0 10px; font-weight: 700;
+}
+.ref-prompt { font-size: 14px; color: var(--sub); line-height: 1.8; font-style: italic; }
+.scripture-block {
+  background: linear-gradient(135deg, #111111, #444444);
+  border-radius: 16px; padding: 36px 32px; text-align: center; margin-top: 8px;
+}
+.scripture-text {
+  font-family: 'Cormorant Garamond', serif; font-size: 22px; color: var(--gold);
+  margin: 0 0 12px; font-style: italic; line-height: 1.5; font-weight: 500;
+}
+.scripture-ref { font-size: 13px; color: rgba(255,255,255,0.6); letter-spacing: 0.08em; }
+
+/* ==================== CONTACT ==================== */
+.contact-item {
+  padding: 20px 22px; border-radius: 12px; background: var(--bg); border: 1px solid var(--border);
+}
+.contact-icon { font-size: 20px; margin-bottom: 8px; }
+.contact-label { font-size: 11px; color: var(--sub); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 4px; }
+.contact-value { font-size: 15px; font-weight: 600; color: var(--dark); }
+.refs-box {
+  background: #F7F7F7;
+  border-radius: 16px; padding: 32px; border: 1px solid var(--border); text-align: center;
+}
+.refs-title {
+  font-family: 'Cormorant Garamond', serif; font-size: 24px; color: var(--dark); margin: 0 0 8px;
+}
+.refs-text { font-size: 14px; color: var(--sub); line-height: 1.7; }
+
+/* FOOTER */
+footer {
+  text-align: center; padding: 32px 24px 40px;
+  border-top: 1px solid var(--border); background: var(--card);
+}
+.footer-title {
+  font-family: 'Cormorant Garamond', serif; font-size: 16px;
+  color: var(--dark); margin: 0 0 4px; font-weight: 600;
+}
+.footer-sub { font-size: 13px; color: var(--sub); margin: 0 0 4px; }
+.footer-sm { font-size: 12px; color: rgba(100,100,100,0.7); }
+
+/* RESPONSIVE */
+@media (max-width: 600px) {
+  .home-name { font-size: 34px; }
+  .sh-title { font-size: 26px; }
+  .cap-header h3 { font-size: 26px; }
+  .nav-links { gap: 0; }
+  .nav-btn { padding: 8px 10px; font-size: 11px; }
+  .card { padding: 20px; }
+}
+</style>
+</head>
+<body>
+
+<!-- ==================== NAVIGATION ==================== -->
+<nav class="nav">
+  <div class="nav-inner">
+    <div class="nav-logo"><span>◆</span> PORTFOLIO</div>
+    <div class="nav-links">
+      <button class="nav-btn active" onclick="showPage('home')">Home</button>
+      <button class="nav-btn" onclick="showPage('about')">About</button>
+      <button class="nav-btn" onclick="showPage('capstone')">Capstone</button>
+      <button class="nav-btn" onclick="showPage('projects')">Projects</button>
+      <button class="nav-btn" onclick="showPage('resume')">Résumé</button>
+      <button class="nav-btn" onclick="showPage('reflection')">Reflection</button>
+      <button class="nav-btn" onclick="showPage('contact')">Contact</button>
+      <button class="nav-btn" onclick="showPage('gallery')">Showcase</button>
+    </div>
+  </div>
+</nav>
+
+<div class="container">
+
+<!-- ==================== HOME ==================== -->
+<div id="page-home" class="page active">
+  <div class="home-hero">
+    <!-- EDIT: Replace "YN" with your initials -->
+    <div class="home-avatar"><span>AC</span></div>
+
+    <!-- EDIT: Replace with your full name -->
+    <h1 class="home-name">Asia Alexandria Amerie Cooper</h1>
+    <p class="home-title">Business Administration — Class of 2026</p>
+    <p class="home-school">Benedict College · Tyrone Adam Burroughs School of Business &amp; Entrepreneurship</p>
+
+    <div class="home-contact-bar">
+      <!-- EDIT: Replace with your real contact info -->
+      <span class="home-contact-item"><span class="home-contact-dot">●</span> Asia.Cooper39@benedict.edu</span>
+      <span class="home-contact-item"><span class="home-contact-dot">●</span> (803) 804-8399</span>
+      <span class="home-contact-item"><span class="home-contact-dot">●</span> www.linkedin.com/in/asia-cooper-01454724a</span>
+    </div>
+
+    <div class="home-cta">
+      <button class="btn-primary" onclick="showPage('capstone')">View Capstone</button>
+      <button class="btn-outline" onclick="showPage('resume')">View Résumé</button>
+      <button class="btn-outline" onclick="showPage('projects')">All Projects</button>
+    </div>
+
+    <div class="stats-bar">
+      <!-- EDIT: Replace with your actual numbers -->
+      <div class="stat-item"><div class="stat-num">3.75</div><div class="stat-label">GPA</div></div>
+      <div class="stat-item"><div class="stat-num">120</div><div class="stat-label">Credit Hours</div></div>
+      <div class="stat-item"><div class="stat-num">4</div><div class="stat-label">Major Projects</div></div>
+      <div class="stat-item"><div class="stat-num">May '26</div><div class="stat-label">Graduation</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== ABOUT ==================== -->
+<div id="page-about" class="page">
+  <div class="sh-label">Introduction</div>
+  <h2 class="sh-title">About Me</h2>
+  <p class="sh-sub">Your professional identity, values, and what drives you.</p>
+
+  <div class="card about-story">
+    <!-- EDIT: Replace all three paragraphs with YOUR story -->
+    <p style="margin-bottom:16px"><strong style="color:var(--dark)"> I am driven by the ability to turn ideas into impact. I take creativity and transform it into strategy, then execute that strategy to produce real results. Business gives me the structure to think strategically, and marketing allows me to bring ideas to life in a way that connects, influences, and grows brands. I chose this field because it blends data with storytelling, giving me the ability to create work that is both meaningful and measurable. At Benedict College, I went beyond learning concepts and focused on applying them. Through hands-on experiences, leadership roles, and real-world projects, I developed the ability to think critically, lead with confidence, and execute with purpose.
+My time at Benedict shaped how I approach both challenges and opportunities. Being in an environment that prioritized growth and excellence pushed me to elevate my standards and expand my vision. I built a strong foundation in branding, customer engagement, and business strategy while gaining experience in diverse and competitive spaces. These experiences confirmed my goal to build a career in corporate America while continuing to grow as an entrepreneur. I see both paths as connected, each one strengthening my ability to create impact and build something meaningful.
+
+What sets me apart is my ability to combine creativity, discipline, and vision with execution. I do not just think of ideas, I bring them to life in a way that produces results. As both a business owner and a marketing professional, I understand how to balance brand strategy with business operations. I lead with intention, stay focused on results, and approach every opportunity with an entrepreneurial mindset. I recognize opportunities others may overlook and turn them into outcomes that create real value. </p> 
+  </div>
+    
+
+  <div class="flex-wrap">
+    <div class="card" style="flex:1 1 300px">
+      <h3 class="section-h">Core Competencies</h3>
+      <!-- EDIT: Replace with your actual competencies -->
+      <div>
+        <span class="tag tag-gold">Strategic Planning</span>
+        <span class="tag tag-purple">Brand Development & Positioning</span>
+        <span class="tag tag-purple">Market Analysis</span>
+        <span class="tag tag-gold">Leadership & Team Collaboration</span>
+        <span class="tag tag-purple">Communication</span>
+        <span class="tag tag-purple">Market & Consumer Insights </span>
+        <span class="tag tag-gold">Relationship Building</span>
+        <span class="tag tag-purple">Entrepreneurial Leadership</span>
+        <span class="tag tag-purple">Client Experience</span>
+        <span class="tag tag-gold">Data-Driven Decisions</span>
+      </div>
+    </div>
+    <div class="quick-facts">
+      <h3>Quick Facts</h3>
+      <!-- EDIT: Replace with your info -->
+      <div class="qf-item"><div class="qf-label">Major</div><div class="qf-value">Business Administration</div></div>
+      <div class="qf-item"><div class="qf-label">Minor</div><div class="qf-value">N/A</div></div>
+      <div class="qf-item"><div class="qf-label">Concentration</div><div class="qf-value">Marketing</div></div>
+      <div class="qf-item"><div class="qf-label">Advisor</div><div class="qf-value">Dr. Melvin Miller
+</div></div>
+    </div>
+  </div>
+
+  
+</div>
+
+<!-- ==================== CAPSTONE ==================== -->
+<div id="page-capstone" class="page">
+  <div class="sh-label">BA 432 · Senior Defense Day</div>
+  <h2 class="sh-title">Senior Capstone Project</h2>
+  <p class="sh-sub">Your culminating business plan, financial model, and investor pitch.</p>
+
+  <div class="cap-header">
+    <div class="cap-header-circle"></div>
+    <!-- EDIT: Replace with your business name and tagline -->
+    <div class="cap-header-label">Featured Venture</div>
+    <h3>Asia Amerie </h3>
+    <p>The Beauty in What You Wear.</p>
+  </div>
+
+  <!-- EDIT: Replace each description with your actual content -->
+  <div class="card cap-section cap-section-red">
+    <h4 class="block-h">The Problem</h4>
+    <p style="font-size:14px;line-height:1.8">The fashion industry often prioritizes mass production over individuality, leaving consumers—especially young women—feeling disconnected from what they wear. Many struggle to find clothing that fits their body, reflects their identity, and delivers a sense of confidence for special moments. Affordable options sacrifice quality, while high-end custom designs are often inaccessible or lack a personalized experience. This creates a gap in the market for a brand that delivers both luxury customization and emotional connection at a more attainable level.</p>
+  </div>
+  <div class="card cap-section cap-section-green">
+    <h4 class="block-h">Our Solution</h4>
+    <p style="font-size:14px;line-height:1.8">Asia Amerié provides high-quality, custom-designed fashion pieces tailored to each client’s vision, body, and occasion. The brand focuses on delivering a personalized, luxury experience—from consultation and design to final fitting—ensuring each piece is both visually striking and confidence-enhancing. What sets Asia Amerié apart is its combination of storytelling, body positivity, and craftsmanship, creating not just clothing but an experience. Customers discover the brand through curated digital content, engage through consultations, and receive a one-of-a-kind piece designed specifically for them.</p>
+  </div>
+  <div class="card cap-section cap-section-blue">
+    <h4 class="block-h">Target Market</h4>
+    <p style="font-size:14px;line-height:1.8">Asia Amerié targets women ages 18–30, primarily college students and young professionals, with moderate to high disposable income who value confidence, individuality, and elevated fashion. These consumers are active on social media, invest in appearance for key life moments, and seek unique, statement pieces rather than fast fashion.
+TAM (Total Addressable Market): U.S. women’s apparel market exceeding $190B
+SAM (Serviceable Available Market): Custom and occasion-based fashion within Gen Z and Millennial consumers
+SOM (Serviceable Obtainable Market): College campuses and urban markets, starting with the Southeast region.</p>
+  </div>
+  <div class="card cap-section cap-section-gold">
+    <h4 class="block-h">Revenue Model</h4>
+    <p style="font-size:14px;line-height:1.8">Asia Amerié generates revenue through custom garment sales, with pricing based on design complexity, materials, and craftsmanship. Custom gowns range from $400–$1,000+, depending on detail, fabric, and customization level.
+
+Custom gowns ($400–$1,000+ premium offering)
+Consultation fees + deposits to secure bookings
+Purse & accessory line (future expansion)
+Limited-edition collections and seasonal drops
+Future styling packages and brand services
+Model: Direct-to-consumer with a pre-order and custom booking system to minimize inventory costs and reduce financial risk.</p>
+  </div>
+  <div class="card cap-section cap-section-purple">
+    <h4 class="block-h">Competitive Advantage</h4>
+    <p style="font-size:14px;line-height:1.8">Asia Amerié’s competitive advantage lies in its ability to merge luxury customization with a strong emotional brand identity. Unlike traditional retailers, the brand offers a fully personalized experience centered on confidence and self-expression.
+Strong brand storytelling and lifestyle marketing
+Founder-led design with direct customer interaction
+Focus on body positivity and inclusivity
+Limited production model creating exclusivity
+Early brand positioning within college and emerging markets</p>
+  </div>
+
+  <!-- Financial Snapshot -->
+  <div class="card">
+    <h3 class="section-h" style="font-size:22px">Financial Snapshot</h3>
+    <!-- EDIT: Replace all placeholder values with your real numbers -->
+    <div class="grid-3">
+      <div class="fin-item featured"><div class="fin-icon">◈</div><div class="fin-value">$67,310</div><div class="fin-label">Startup Costs</div></div>
+      <div class="fin-item"><div class="fin-icon">◇</div><div class="fin-value">$150,000</div><div class="fin-label">Year 1 Revenue</div></div>
+      <div class="fin-item"><div class="fin-icon">△</div><div class="fin-value">236 units
+</div><div class="fin-label">Break-Even</div></div>
+      <div class="fin-item"><div class="fin-icon">○</div><div class="fin-value">63%</div><div class="fin-label">Contribution Margin Ratio</div></div>
+      <div class="fin-item"><div class="fin-icon">□</div><div class="fin-value">$30</div><div class="fin-label">Customer Acq. Cost</div></div>
+      <div class="fin-item"><div class="fin-icon">☆</div><div class="fin-value">$220,000 (projected)</div><div class="fin-label">5-Year Projection</div></div>
+    </div>
+  </div>
+
+  <!-- Deliverable Links -->
+  <!-- EDIT: Replace # with your actual links (Google Drive, YouTube, etc.) -->
+  <div class="flex-wrap">
+    <a href="https://drive.google.com/drive/folders/14347p5xFmeuVjqfDLPd6lHqwVVrTTR3h?usp=sharing" class="link-card"><div class="link-icon">📄</div><div class="link-title">Executive Summary</div><div class="link-desc">Link your one-page summary PDF</div></a>
+    <a href="https://drive.google.com/drive/folders/1Xhymr-THleU6nJ7O5QyrMmDWWNfsk87-?usp=sharing" class="link-card"><div class="link-icon">📊</div><div class="link-title">Pitch Deck</div><div class="link-desc">Link your PowerPoint or Google Slides</div></a>
+    <a href="https://drive.google.com/drive/folders/1pQwaSJT7J1GALMlKIp_vDgiNqCTdlxml?usp=sharing" class="link-card"><div class="link-icon">📈</div><div class="link-title">Financial Workbook</div><div class="link-desc">Link your Excel financial model</div></a>
+    <a href="https://youtu.be/euQxAUv1tJ0" class="link-card"><div class="link-icon">🎬</div><div class="link-title">Pitch Video</div><div class="link-desc">Link your Defense Day recording</div></a>
+  </div>
+
+ 
+</div>
+
+<!-- ==================== PROJECTS ==================== -->
+<div id="page-projects" class="page">
+  <div class="sh-label">Academic & Professional Work</div>
+  <h2 class="sh-title">Project Portfolio</h2>
+  <p class="sh-sub">A curated showcase of your most impactful work across your Benedict College experience.</p>
+
+  <div class="flex-col">
+
+    <!-- PROJECT 1: CAPSTONE (FEATURED) -->
+    <div class="project-card featured" onclick="toggleProject(this)">
+      <div class="project-badge">★ Capstone Feature Project</div>
+      <div class="project-inner">
+        <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:12px;flex-wrap:wrap">
+          <div style="flex:1">
+            <!-- EDIT: Replace with your capstone project title -->
+            <h3 class="project-title">Senior Capstone — Asia Amerié </h3>
+            <div class="project-meta">
+              <span class="tag tag-purple">BA 432 Senior Capstone</span>
+              <span class="tag tag-gold">Spring 2026</span>
+              <span style="font-size:12px;color:var(--sub)">Business Plan & Live Pitch</span>
+            </div>
+          </div>
+          <span class="project-toggle">▾</span>
+        </div>
+        <div class="project-details">
+          <!-- EDIT: Replace with your real project description -->
+          <p style="font-size:14px;line-height:1.8;margin-bottom:16px">Developed a comprehensive business plan including market analysis, financial projections, operational strategy, and investor-ready pitch deck. Presented before a faculty judging panel on Senior Defense Day.</p>
+          <div style="margin-bottom:16px">
+            <div style="font-size:11px;font-weight:600;color:var(--sub);text-transform:uppercase;letter-spacing:0.1em;margin-bottom:8px">Skills Applied</div>
+            <span class="tag tag-purple">Business Planning</span>
+            <span class="tag tag-purple">Financial Modeling</span>
+            <span class="tag tag-purple">Pitch Presentation</span>
+            <span class="tag tag-purple">Market Research</span>
+</div>
+          <div class="project-link-box">
+  <a href="https://asia-amerie.square.site" target="_blank">
+    <strong>Link your deliverables here:</strong> Attach your paper, presentation, dataset, video, or any supporting materials.
+  </a>
+</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- PROJECT 2 -->
+    <div class="project-card" onclick="toggleProject(this)">
+      <div class="project-inner">
+        <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:12px;flex-wrap:wrap">
+          <div style="flex:1">
+            <!-- EDIT: Replace with your project info -->
+            <h3 class="project-title">Charter Day Speaker — Benedict College</h3>
+            <div class="project-meta">
+              <span class="tag tag-purple">Institutional Event</span>
+              <span class="tag tag-gold">Fall 2026</span>
+              <span style="font-size:12px;color:var(--sub)">Public Speaking / Leadership</span>
+            </div>
+          </div>
+          <span class="project-toggle">▾</span>
+        </div>
+        <div class="project-details">
+          <p style="font-size:14px;line-height:1.8;margin-bottom:16px">Selected to deliver a formal speech during Benedict College’s Charter Day celebration, addressing an audience of students, faculty, and leadership. Demonstrated strong communication, confidence, and the ability to engage a large audience while representing the institution with professionalism and purpose.</p>
+          <div style="margin-bottom:16px">
+            <div style="font-size:11px;font-weight:600;color:var(--sub);text-transform:uppercase;letter-spacing:0.1em;margin-bottom:8px">Skills Applied</div>
+            <span class="tag tag-purple">Public Speaking</span>
+            <span class="tag tag-purple"> Communication </span>
+            <span class="tag tag-purple">Presentation Skills</span>
+          </div>
+        <div class="project-link-box">
+  <a href="https://www.linkedin.com/posts/asia-cooper-01454724a_benedictcollege-entrepreneurship-asiaamerie-activity-7399496784701718528-59jI?utm_source=share&utm_medium=member_desktop&rcm=ACoAAD2pD1ABroan1Q48zNJvwR6gl8_jVEL09AM" target="_blank">
+    <strong>Link your deliverables here:</strong> Attach your paper, presentation, dataset, video, or any supporting materials.
+  </a>
+</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- PROJECT 3 -->
+    <div class="project-card" onclick="toggleProject(this)">
+      <div class="project-inner">
+        <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:12px;flex-wrap:wrap">
+          <div style="flex:1">
+            <h3 class="project-title">HBCU Entrepreneurship & Innovation Business Plan Competition</h3>
+            <div class="project-meta">
+              <span class="tag tag-purple">National Competition</span>
+              <span class="tag tag-gold">Spring 2026</span>
+              <span style="font-size:12px;color:var(--sub)">Business Strategy / Pitch Competition</span>
+            </div>
+          </div>
+          <span class="project-toggle">▾</span>
+        </div>
+        <div class="project-details">
+          <p style="font-size:14px;line-height:1.8;margin-bottom:16px">Selected to compete in the HBCU Entrepreneurship and Innovation Business Plan Competition, presenting a comprehensive business concept alongside top student entrepreneurs from HBCU institutions nationwide. Collaborated in a highly competitive environment, refining business strategy, financial projections, and pitch delivery under pressure. Earned a Top 6 placement out of 30 teams, demonstrating strong analytical thinking, innovation, and the ability to effectively communicate a scalable business model. The experience strengthened my confidence, sharpened my strategic mindset, and exposed me to high-level entrepreneurial thinking and competition..</p>
+          <div style="margin-bottom:16px">
+            <div style="font-size:11px;font-weight:600;color:var(--sub);text-transform:uppercase;letter-spacing:0.1em;margin-bottom:8px">Skills Applied</div>
+            <span class="tag tag-purple"> Business Strategy </span>
+            <span class="tag tag-purple">Pitch Presentation</span>
+            <span class="tag tag-purple">Financial Planning</span>
+          </div>
+          <div class="project-link-box">
+  <a href="https://www.linkedin.com/posts/asia-cooper-01454724a_benedictcollege-hbcu-entrepreneurship-activity-7452818424617136128-GjaP?utm_source=share&utm_medium=member_desktop&rcm=ACoAAD2pD1ABroan1Q48zNJvwR6gl8_jVEL09AM" target="_blank">
+    <strong>Link your deliverables here:</strong> Attach your paper, presentation, dataset, video, or any supporting materials.
+  </a>
+</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- PROJECT 4 -->
+    <div class="project-card" onclick="toggleProject(this)">
+      <div class="project-inner">
+        <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:12px;flex-wrap:wrap">
+          <div style="flex:1">
+            <h3 class="project-title">Campus Ambassador — Bubble</h3>
+            <div class="project-meta">
+              <span class="tag tag-purple">Brand Ambassador Program</span>
+              <span class="tag tag-gold">Fall 2025</span>
+              <span style="font-size:12px;color:var(--sub)"> Marketing / Brand Promotion</span>
+            </div>
+          </div>
+          <span class="project-toggle">▾</span>
+        </div>
+        <div class="project-details">
+          <p style="font-size:14px;line-height:1.8;margin-bottom:16px">Selected as a Campus Ambassador for Bubble, representing the brand and promoting its products across campus through strategic marketing initiatives and peer engagement. Responsible for increasing brand awareness by creating content, hosting activations, and leveraging social media platforms to drive student interest and participation. Built connections with students while serving as a direct link between the brand and campus community, contributing to visibility and engagement growth.</p>
+          <div style="margin-bottom:16px">
+            <div style="font-size:11px;font-weight:600;color:var(--sub);text-transform:uppercase;letter-spacing:0.1em;margin-bottom:8px">Skills Applied</div>
+            <span class="tag tag-purple">Brand Marketing</span>
+            <span class="tag tag-purple">Social Media Strategy</span>
+            <span class="tag tag-purple">Networking</span>
+          </div>
+         <div class="project-link-box">
+  <a href="https://www.linkedin.com/posts/asia-cooper-01454724a_im-happy-to-share-that-im-starting-a-new-activity-7278474180612784128-bMGt?utm_source=share&utm_medium=member_desktop&rcm=ACoAAD2pD1ABroan1Q48zNJvwR6gl8_jVEL09AM" target="_blank">
+    <strong>Link your deliverables here:</strong> Attach your paper, presentation, dataset, video, or any supporting materials.
+  </a>
+</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- COPY THIS BLOCK TO ADD MORE PROJECTS -->
+    <!--
+    <div class="project-card" onclick="toggleProject(this)">
+      <div class="project-inner">
+        <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:12px;flex-wrap:wrap">
+          <div style="flex:1">
+            <h3 class="project-title">New Project Title</h3>
+            <div class="project-meta">
+              <span class="tag tag-purple">Course</span>
+              <span class="tag tag-gold">Semester</span>
+              <span style="font-size:12px;color:var(--sub)">Type</span>
+            </div>
+          </div>
+          <span class="project-toggle">▾</span>
+        </div>
+        <div class="project-details">
+          <p style="font-size:14px;line-height:1.8;margin-bottom:16px">Your description here.</p>
+          <div style="margin-bottom:16px">
+            <div style="font-size:11px;font-weight:600;color:var(--sub);text-transform:uppercase;letter-spacing:0.1em;margin-bottom:8px">Skills Applied</div>
+            <span class="tag tag-purple">Skill</span>
+          </div>
+          <div class="project-link-box"><strong>Link your deliverables here.</strong></div>
+        </div>
+      </div>
+    </div>
+    -->
+
+  </div>
+
+
+
+  
+</div>
+
+<!-- ==================== RÉSUMÉ ==================== -->
+<div id="page-resume" class="page">
+  <div class="sh-label">Professional Profile</div>
+  <h2 class="sh-title">Résumé</h2>
+  <p class="sh-sub">Updated, employer-ready, and linked to your LinkedIn profile.</p>
+
+  <div class="resume-dl-bar">
+    <span style="font-size:14px;color:var(--sub)">Download or print your latest résumé</span>
+    <div class="resume-dl-btns">
+      <!-- EDIT: Replace # with link to your résumé PDF (Google Drive, Dropbox, etc.) -->
+      <a href="https://drive.google.com/drive/folders/1EiYylnZc20xRi02PTb6aSIBmeoZ-6JxL?usp=share_link" class="btn-primary" style="text-decoration:none;display:inline-block">Download PDF</a>
+<!-- EDIT: Replace # with your LinkedIn URL -->
+<a href="https://www.linkedin.com/in/asia-cooper-01454724a" class="btn-outline" style="text-decoration:none;display:inline-block">
+  View LinkedIn
+</a>
+</div>
+</div>
+
+  <!-- Objective -->
+  <div class="card card-accent-left">
+    <div style="font-size:11px;font-weight:700;color:var(--gold);text-transform:uppercase;letter-spacing:0.12em;margin-bottom:10px">Professional Objective</div>
+    <!-- EDIT: Replace with your objective -->
+    <p style="font-size:15px;line-height:1.8">Ambitious and results-oriented Business Marketing graduate from Benedict College with experience in brand development, content strategy, and customer engagement. Pursuing a role in marketing or business strategy within corporate America to leverage data-driven insights, leadership, and entrepreneurial mindset to increase revenue and strengthen brand positioning.</p>
+  </div>
+
+  <!-- Education -->
+  <div class="card">
+    <h3 class="section-h">Education</h3>
+    <!-- EDIT: Replace with your education details -->
+    <div style="font-size:16px;font-weight:600;color:var(--dark)">Bachelor of Science in Business Administration</div>
+    <div style="font-size:14px;color:var(--purple);margin-top:4px;font-weight:500">Benedict College — Tyrone Adam Burroughs School of Business &amp; Entrepreneurship</div>
+    <div style="font-size:13px;color:var(--sub);margin-top:6px">Expected May 2026 · GPA: 3.75</div>
+    <div style="margin-top:12px">
+      <span class="tag tag-gold">Dean's List</span>
+      <span class="tag tag-gold">Honor Society</span>
+      <span class="tag tag-gold">Burroughs Scholars Program</span>
+    </div>
+  </div>
+
+  <!-- Experience -->
+  <!-- Experience -->
+  <div class="card">
+    <h3 class="section-h">Professional Experience</h3>
+
+    <!-- EXPERIENCE 1: Experian -->
+    <div style="margin-bottom:28px">
+      <div class="exp-header">
+        <div class="exp-title">Client Success Intern</div>
+        <div class="exp-dates">May 2025 – August 2025</div>
+      </div>
+      <div class="exp-org">Experian</div>
+      <div class="exp-point">
+        <span class="exp-dot">●</span>
+        <span>Managed onboarding and relationship management for Fortune 500 accounts to drive long-term client success.</span>
+      </div>
+      <div class="exp-point">
+        <span class="exp-dot">●</span>
+        <span>Utilized Salesforce and market research to build tailored value propositions and strategic business plans.</span>
+      </div>
+      <div class="exp-point">
+        <span class="exp-dot">●</span>
+        <span>Partnered with cross-functional teams in marketing and product to optimize service delivery and client engagement.</span>
+      </div>
+    </div>
+
+    <!-- EXPERIENCE 2: Disney -->
+    <div style="margin-bottom:28px">
+      <div class="exp-header">
+        <div class="exp-title">Disney College Program</div>
+        <div class="exp-dates">June 2024 – August 2024</div>
+      </div>
+      <div class="exp-org">The Walt Disney Company</div>
+      <div class="exp-point">
+        <span class="exp-dot">●</span>
+        <span>Delivered premium guest services and maintained high-quality interaction standards in park operations.</span>
+      </div>
+      <div class="exp-point">
+        <span class="exp-dot">●</span>
+        <span>Completed specialized business coursework in Leadership and Hospitality Management, focusing on professional relationship building and advanced communication strategies.</span>
+      </div>
+      <div class="exp-point">
+        <span class="exp-dot">●</span>
+        <span>Collaborated with diverse teams to improve guest satisfaction metrics and overall operational efficiency.</span>
+      </div>
+    </div>
+
+    <!-- EXPERIENCE 3: Neighborhood Home Solutions -->
+    <div>
+      <div class="exp-header">
+        <div class="exp-title">Social Media Marketing Intern</div>
+        <div class="exp-dates">November 2023 – December 2023</div>
+      </div>
+      <div class="exp-org">Neighborhood Home Solutions (Remote)</div>
+      <div class="exp-point">
+        <span class="exp-dot">●</span>
+        <span>Drove a 25% increase in lead generation by supporting digital and traditional marketing campaigns.</span>
+      </div>
+      <div class="exp-point">
+        <span class="exp-dot">●</span>
+        <span>Produced high-engagement content for social media, newsletters, and blogs to nurture the sales pipeline.</span>
+      </div>
+      <div class="exp-point">
+        <span class="exp-dot">●</span>
+        <span>Assisted in the coordination of product launches and execution of email marketing initiatives.</span>
+      </div>
+    </div>
+
+  </div> <!-- Final closing tag for the white card -->
+  <!-- Skills -->
+  <div class="flex-wrap" style="margin-bottom:16px">
+    <!-- EDIT: Replace skills in each column -->
+    <div class="skill-col">
+      <h4 class="skill-cat">Sales & CRM</h4>
+      <div class="skill-item"><span class="skill-dot gold"></span>Salesforce</div>
+      <div class="skill-item"><span class="skill-dot gold"></span> LinkedIn Navigator</div>
+      <div class="skill-item"><span class="skill-dot gold"></span> Lead Generation</div>
+      <div class="skill-item"><span class="skill-dot muted"></span> Consultative Selling</div>
+      <div class="skill-item"><span class="skill-dot muted"></span> Relationship
+Management.</div>
+    </div>
+    <div class="skill-col">
+      <h4 class="skill-cat">Marketing</h4>
+      <div class="skill-item"><span class="skill-dot gold"></span> Google Analytics</div>
+      <div class="skill-item"><span class="skill-dot gold"></span> SEO</div>
+      <div class="skill-item"><span class="skill-dot gold"></span> Email Marketing</div>
+      <div class="skill-item"><span class="skill-dot muted"></span> Social Media Advertising</div>
+      <div class="skill-item"><span class="skill-dot muted"></span> Brand Development</div>
+    </div>
+    <div class="skill-col">
+      <h4 class="skill-cat">Technical</h4>
+      <div class="skill-item"><span class="skill-dot gold"></span> Microsoft Office</div>
+      <div class="skill-item"><span class="skill-dot gold"></span> Adobe Illustrator</div>
+      <div class="skill-item"><span class="skill-dot gold"></span> Adobe Photoshop</div>
+      <div class="skill-item"><span class="skill-dot muted"></span> Social Media Marketing</div>
+      <div class="skill-item"><span class="skill-dot muted"></span> Canva</div>
+    </div>
+  </div>
+
+  <!-- Certs & Involvement -->
+  <div class="flex-wrap">
+    <div class="card" style="flex:1 1 280px">
+      <h3 class="section-h" style="font-size:18px">Certifications &amp; Training</h3>
+      <!-- EDIT: Replace with your certifications -->
+      <div style="font-size:13px;margin-bottom:8px;display:flex;gap:8px"><span style="color:var(--gold)">✦</span> Canva Design Certification — Canva (2025)</div>
+      <div style="font-size:13px;margin-bottom:8px;display:flex;gap:8px"><span style="color:var(--gold)">✦</span> HubSpot Marketing Certification, HubSpot — 2025</div>
+    </div>
+    <div class="card" style="flex:1 1 280px">
+      <h3 class="section-h" style="font-size:18px">Leadership &amp; Involvement</h3>
+      <!-- EDIT: Replace with your organizations -->
+      <div style="font-size:13px;margin-bottom:8px;display:flex;gap:8px"><span style="color:var(--gold)">✦</span> Burroughs Scholars Program Secretary. Fall 2023 – Present</div>
+      <div style="font-size:13px;margin-bottom:8px;display:flex;gap:8px"><span style="color:var(--gold)">✦</span> Honors Program Scholar. Spring 2023 – Present</div>
+      <div style="font-size:13px;margin-bottom:8px;display:flex;gap:8px"><span style="color:var(--gold)">✦</span> NABA INC. Member. Fall 2024– Present</div>
+    </div>
+  </div>
+
+  
+</div>
+
+<!-- ==================== REFLECTION ==================== -->
+<div id="page-reflection" class="page">
+  <div class="sh-label">Growth & Vision</div>
+  <h2 class="sh-title">Capstone Reflection</h2>
+  <p class="sh-sub">Your transformation from student to professional, in your own words.</p>
+
+  <!-- EDIT: Replace the italic prompt text with your actual reflection (minimum 200 words each) -->
+  <div class="card">
+    <div class="ref-card">
+      <div class="ref-num">01</div>
+      <div>
+        <h3 class="ref-title">My Journey at Benedict</h3>
+        <p class="ref-prompt">My journey at Benedict College has been a process of both professional and personal transformation. I came in with ambition, but Benedict gave me direction, discipline, and the confidence to lead. As a Business Marketing major, I learned that business is not just about ideas—it’s about execution, consistency, and understanding people. Through courses like BA 432, I gained a deeper understanding of entrepreneurship, especially what it takes to turn a concept into a structured, viable business. I learned how to think critically about pricing, target markets, operations, and long-term sustainability.
+BA 432 challenged me to move beyond surface-level thinking and truly develop my brand, Asia Amerié, as a real business. It forced me to analyze my decisions, back them with data, and refine my strategy. More importantly, I learned about myself—how I handle pressure, how I lead, and how I push through uncertainty. Senior Defense Day was a defining moment for me. Standing in front of a panel and presenting my business validated my growth. It strengthened my confidence in my knowledge, my vision, and my ability to communicate effectively in high-stakes environments. It showed me that I am capable of not only building a business but also defending it with clarity and confidence.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="ref-card">
+      <div class="ref-num">02</div>
+      <div>
+        <h3 class="ref-title">Challenges &amp; Breakthroughs</h3>
+        <p class="ref-prompt">One of the biggest challenges I faced while developing my business concept was refining my value proposition and pricing strategy. Initially, I struggled with balancing quality and cost, especially knowing that my brand, Asia Amerié, is centered around high-quality, custom fashion rather than affordability. I had to shift my mindset from trying to appeal to everyone to focusing on a specific target market that values exclusivity and personalization. This required deeper research, honest self-reflection, and the willingness to reposition my brand.
+Another challenge was time management and maintaining consistency while balancing multiple responsibilities, including academics, leadership roles, and internships. There were moments where I felt overwhelmed, especially when deadlines for the capstone approached. However, I overcame this by becoming more structured, planning ahead, and holding myself accountable. I also learned the importance of asking for feedback and actually applying it.
+The biggest breakthroughs came from moments of failure or discomfort. There were times when my ideas were challenged, and I had to go back and rework entire sections of my business plan. Those moments taught me resilience and adaptability. If I could do something differently, I would start refining my concept earlier and seek feedback sooner instead of waiting until later stages. Overall, these challenges strengthened my ability to think strategically and operate like a true business owner.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="ref-card">
+      <div class="ref-num">03</div>
+      <div>
+        <h3 class="ref-title">My Professional Future</h3>
+        <p class="ref-prompt">In five years, I see myself established in corporate America, working in a marketing or business strategy role where I can contribute to brand growth, customer engagement, and revenue generation. At the same time, I plan to continue growing my business, Asia Amerié, into a recognized brand known for high-quality, custom fashion and exceptional customer experience. My long-term goal is to successfully operate in both spaces—corporate and entrepreneurship—using each to strengthen the other.
+My capstone experience directly connects to these goals because it gave me a realistic understanding of what it takes to build and sustain a business. It wasn’t just about creating a plan—it was about thinking like a strategist, making data-driven decisions, and preparing for real-world challenges. The skills I developed in BA 432, such as strategic planning, financial analysis, problem-solving, and professional communication, will be essential as I move forward in my career.
+I also carry forward the confidence and leadership skills I developed at Benedict College. I want to be the kind of leader who is strategic, decisive, and forward-thinking, but also adaptable and people-focused. I aim to lead with both vision and execution—someone who not only sets goals but ensures they are achieved. Ultimately, I want to create impact, build meaningful brands, and open doors for others while continuing to grow into the best version of myself professionally and personally.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="scripture-block">
+    <p class="scripture-text">"For I know the thoughts that I think toward you, saith the LORD, thoughts of peace, and not of evil, to give you an expected end."</p>
+    <p class="scripture-ref">— Jeremiah 29:11 KJV</p>
+  </div>
+
+  
+      
+</div>
+
+<!-- ==================== CONTACT ==================== -->
+<div id="page-contact" class="page">
+  <div class="sh-label">Let's Connect</div>
+  <h2 class="sh-title">Contact Information</h2>
+  <p class="sh-sub">Ready to talk? Here is how to reach me.</p>
+
+  <div class="card">
+    <div class="grid-2">
+      <!-- EDIT: Replace with your real contact info -->
+      <div class="contact-item"><div class="contact-icon">✉</div><div class="contact-label">Email</div><div class="contact-value">Asia.Cooper39@benedict.edu</div></div>
+      <div class="contact-item"><div class="contact-icon">☎</div><div class="contact-label">Phone</div><div class="contact-value">(803) 804-8399</div></div>
+      <div class="contact-item"><div class="contact-icon">in</div><div class="contact-label">LinkedIn</div><div class="contact-value">www.linkedin.com/in/asia-cooper-01454724a</div></div>
+      <div class="contact-item"><div class="contact-icon">◎</div><div class="contact-label">Location</div><div class="contact-value">Columbia, South Carolina</div></div>
+    </div>
+  </div>
+
+  <div class="refs-box">
+    <h3 class="refs-title">References Available Upon Request</h3>
+    <p class="refs-text">Professional and academic references provided upon request. Please contact me via email or LinkedIn.</p>
+  </div>
+
+
+
+<!-- ==================== GALLERY ==================== -->
+<div id="page-gallery" class="page">
+  <div class="sh-label">Visual Showcase</div>
+  <h2 class="sh-title">Asia Amerié Showcase Gallery</h2>
+  <p class="sh-sub">Custom designs, client moments, and the story behind the brand.</p>
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px;margin-bottom:24px">
+    <div style="border-radius:14px;overflow:hidden;border:1px solid var(--border);background:var(--card);transition:box-shadow 0.25s ease" onmouseover="this.style.boxShadow='0 6px 24px rgba(0,0,0,0.12)'" onmouseout="this.style.boxShadow='none'">
+      <img src="img_4520.jpg" style="width:100%;aspect-ratio:4/3;object-fit:cover;display:block;">
+      <div style="padding:14px 16px">
+        <div style="font-size:13px;font-weight:600;color:var(--dark)">Asia Amerié — Pink Light-Up Gown</div>
+        <div style="font-size:12px;color:var(--sub);margin-top:2px">Custom Sequin & Tulle · LED Detail · Original Design</div>
+      </div>
+    </div>
+    <div style="border-radius:14px;overflow:hidden;border:1px solid var(--border);background:var(--card);transition:box-shadow 0.25s ease" onmouseover="this.style.boxShadow='0 6px 24px rgba(0,0,0,0.12)'" onmouseout="this.style.boxShadow='none'">
+      <img src="img_4209.jpg" style="width:100%;aspect-ratio:4/3;object-fit:cover;display:block;">
+      <div style="padding:14px 16px">
+        <div style="font-size:13px;font-weight:600;color:var(--dark)">Asia Amerié — Crimson Royale Gown</div>
+        <div style="font-size:12px;color:var(--sub);margin-top:2px">Custom Red Sequin with Cape · Original Design</div>
+      </div>
+    </div>
+    <div style="border-radius:14px;overflow:hidden;border:1px solid var(--border);background:var(--card);transition:box-shadow 0.25s ease" onmouseover="this.style.boxShadow='0 6px 24px rgba(0,0,0,0.12)'" onmouseout="this.style.boxShadow='none'">
+      <img src="img_8515.jpg" style="width:100%;aspect-ratio:4/3;object-fit:cover;display:block;">
+      <div style="padding:14px 16px">
+        <div style="font-size:13px;font-weight:600;color:var(--dark)">Asia Amerié — Client Looks</div>
+        <div style="font-size:12px;color:var(--sub);margin-top:2px">Custom Yellow & Gold Gowns · Client Feature</div>
+      </div>
+    </div>
+    <div style="border-radius:14px;overflow:hidden;border:1px solid var(--border);background:var(--card);transition:box-shadow 0.25s ease" onmouseover="this.style.boxShadow='0 6px 24px rgba(0,0,0,0.12)'" onmouseout="this.style.boxShadow='none'">
+      <img src="img_1769.jpg" style="width:100%;aspect-ratio:4/3;object-fit:cover;display:block;">
+      <div style="padding:14px 16px">
+        <div style="font-size:13px;font-weight:600;color:var(--dark)">Asia Amerié — Royal Blue Gown</div>
+        <div style="font-size:12px;color:var(--sub);margin-top:2px">Custom Sequin Cape Gown · Client Feature</div>
+      </div>
+    </div>
+    <div style="border-radius:14px;overflow:hidden;border:1px solid var(--border);background:var(--card);transition:box-shadow 0.25s ease" onmouseover="this.style.boxShadow='0 6px 24px rgba(0,0,0,0.12)'" onmouseout="this.style.boxShadow='none'">
+      <img src="img_9075.jpg" style="width:100%;aspect-ratio:4/3;object-fit:cover;display:block;">
+      <div style="padding:14px 16px">
+        <div style="font-size:13px;font-weight:600;color:var(--dark)">Asia Amerié — Black Stardust Gown</div>
+        <div style="font-size:12px;color:var(--sub);margin-top:2px">Custom Beaded Black Gown · Client Feature</div>
+      </div>
+    </div>
+    <div style="border-radius:14px;overflow:hidden;border:1px solid var(--border);background:var(--card);transition:box-shadow 0.25s ease" onmouseover="this.style.boxShadow='0 6px 24px rgba(0,0,0,0.12)'" onmouseout="this.style.boxShadow='none'">
+      <img src="img_9581.jpg" style="width:100%;aspect-ratio:4/3;object-fit:cover;display:block;">
+      <div style="padding:14px 16px">
+        <div style="font-size:13px;font-weight:600;color:var(--dark)">Asia Amerié — Original Design</div>
+        <div style="font-size:12px;color:var(--sub);margin-top:2px">Custom Off-Shoulder Gown · The Beauty in What You Wear</div>
+      </div>
+    </div>
+    <div style="border-radius:14px;overflow:hidden;border:1px solid var(--border);background:var(--card);transition:box-shadow 0.25s ease" onmouseover="this.style.boxShadow='0 6px 24px rgba(0,0,0,0.12)'" onmouseout="this.style.boxShadow='none'">
+      <img src="img_6708.jpg" style="width:100%;aspect-ratio:4/3;object-fit:cover;display:block;">
+      <div style="padding:14px 16px">
+        <div style="font-size:13px;font-weight:600;color:var(--dark)">Asia Amerié — Client Look</div>
+        <div style="font-size:12px;color:var(--sub);margin-top:2px">Custom Beaded Black Gown · Client Feature</div>
+      </div>
+    </div>
+    <div style="border-radius:14px;overflow:hidden;border:1px solid var(--border);background:var(--card);transition:box-shadow 0.25s ease" onmouseover="this.style.boxShadow='0 6px 24px rgba(0,0,0,0.12)'" onmouseout="this.style.boxShadow='none'">
+      <img src="img_6709.jpg" style="width:100%;aspect-ratio:4/3;object-fit:cover;display:block;">
+      <div style="padding:14px 16px">
+        <div style="font-size:13px;font-weight:600;color:var(--dark)">Asia Amerié — Client Look</div>
+        <div style="font-size:12px;color:var(--sub);margin-top:2px">Silver & Black Beaded Gown · Client Feature</div>
+      </div>
+    </div>
+    <div style="border-radius:14px;overflow:hidden;border:1px solid var(--border);background:var(--card);transition:box-shadow 0.25s ease" onmouseover="this.style.boxShadow='0 6px 24px rgba(0,0,0,0.12)'" onmouseout="this.style.boxShadow='none'">
+      <img src="img_0251.jpg" style="width:100%;aspect-ratio:4/3;object-fit:cover;display:block;">
+      <div style="padding:14px 16px">
+        <div style="font-size:13px;font-weight:600;color:var(--dark)">Asia Amerié — Client Look</div>
+        <div style="font-size:12px;color:var(--sub);margin-top:2px">Custom Purple Sequin Gown · Client Feature</div>
+      </div>
+    </div>
+    <div style="border-radius:14px;overflow:hidden;border:1px solid var(--border);background:var(--card);transition:box-shadow 0.25s ease" onmouseover="this.style.boxShadow='0 6px 24px rgba(0,0,0,0.12)'" onmouseout="this.style.boxShadow='none'">
+      <img src="img_5334.jpg" style="width:100%;aspect-ratio:4/3;object-fit:cover;display:block;">
+      <div style="padding:14px 16px">
+        <div style="font-size:13px;font-weight:600;color:var(--dark)">She Leaves a Little Sparkle</div>
+        <div style="font-size:12px;color:var(--sub);margin-top:2px">The inspiration behind the brand</div>
+      </div>
+    </div>
+  </div>
+</div>
+</div><!-- end container -->
+
+
+
+<!-- ==================== JAVASCRIPT ==================== -->
+<script>
+function showPage(pageId) {
+  // Hide all pages
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  // Show selected page
+  document.getElementById('page-' + pageId).classList.add('active');
+  // Update nav buttons
+  document.querySelectorAll('.nav-btn').forEach(btn => btn.classList.remove('active'));
+  event.target.classList.add('active');
+  // Also update if called from CTA buttons (not nav)
+  document.querySelectorAll('.nav-btn').forEach(btn => {
+    if (btn.textContent.trim().toLowerCase() === pageId.toLowerCase() ||
+        (pageId === 'resume' && btn.textContent.trim() === 'Résumé')) {
+      btn.classList.add('active');
+    }
+  });
+  // Scroll to top
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function toggleProject(card) {
+  const details = card.querySelector('.project-details');
+  const toggle = card.querySelector('.project-toggle');
+  if (details.classList.contains('open')) {
+    details.classList.remove('open');
+    toggle.classList.remove('open');
+  } else {
+    details.classList.add('open');
+    toggle.classList.add('open');
+  }
+}
+</script>
+
+</body>
+</html>
